@@ -20,7 +20,9 @@ def load_data(y_name='result'):
     test_x, test_y = test, test.pop(y_name)
     test_y = test_y.map(dict(zip(RESULTS, range(len(RESULTS)))))
 
-    return (train_x, train_y), (test_x, test_y)
+    f_columns = feature_columns(train_x)
+
+    return (train_x, train_y), (test_x, test_y), f_columns
 
 
 def feature_columns(features):
