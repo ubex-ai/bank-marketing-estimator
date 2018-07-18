@@ -18,6 +18,12 @@ def main(argv):
     # Fetch the data
     (train_x, train_y), (test_x, test_y), feature_columns = bank_marketing_data.load_data()
 
+    # Build 2 hidden layer DNN with 60, 60 units respectively.
+    classifier = tf.estimator.DNNClassifier(
+        feature_columns=feature_columns,
+        hidden_units=[60, 60]
+    )
+
 
 if __name__ == '__main__':
     tf.logging.set_verbosity(tf.logging.INFO)
