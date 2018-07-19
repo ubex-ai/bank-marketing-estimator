@@ -40,3 +40,15 @@ def feature_columns(features):
             feature_columns_list.append(tf.feature_column.numeric_column(key=key))
 
     return feature_columns_list
+
+
+def get_train_input(features, labels, batch_size):
+    """An input function for training"""
+    # Convert the inputs to a Dataset.
+    dataset = tf.data.Dataset.from_tensor_slices((dict(features), labels))
+
+    # Shuffle, repeat, and batch the examples.
+    dataset = dataset.shuffle(40000).repeat().batch(batch_size)
+
+    # Return the dataset.
+    return dataset
