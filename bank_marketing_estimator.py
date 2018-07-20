@@ -24,6 +24,15 @@ def main(argv):
         hidden_units=[60, 60]
     )
 
+    # Train the Model.
+    classifier.train(
+        input_fn=lambda: bank_marketing_data.get_train_input(
+            train_x,
+            train_y,
+            args.batch_size
+        ),
+        steps=args.train_steps
+    )
 
 if __name__ == '__main__':
     tf.logging.set_verbosity(tf.logging.INFO)
