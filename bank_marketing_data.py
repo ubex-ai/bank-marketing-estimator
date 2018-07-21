@@ -44,11 +44,32 @@ def feature_columns(features):
 
 def get_train_input(features, labels, batch_size):
     """An input function for training"""
+
     # Convert the inputs to a Dataset.
     dataset = tf.data.Dataset.from_tensor_slices((dict(features), labels))
 
     # Shuffle, repeat, and batch the examples.
     dataset = dataset.shuffle(40000).repeat().batch(batch_size)
+
+    # Return the dataset.
+    return dataset
+
+
+def get_eval_input(features, labels, batch_size):
+    """An input function for evaluation or prediction"""
+
+    features=dict(features)
+    if labels is None:
+        inputs = features
+    else:
+        inputs = (features, labels)
+
+    # Convert the inputs to a Dataset.
+    dataset = tf.data.Dataset.from_tensor_slices(inputs)
+
+    # Batch the examples
+    assert batch_size is not None, "batch_size must not be None"
+    dataset = dataset.batch(batch_size)
 
     # Return the dataset.
     return dataset
