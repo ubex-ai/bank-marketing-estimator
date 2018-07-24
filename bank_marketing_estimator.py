@@ -34,6 +34,18 @@ def main(argv):
         steps=args.train_steps
     )
 
+    # Evaluate the model.
+    eval_result = classifier.evaluate(
+        input_fn=lambda: bank_marketing_data.get_eval_input(
+            test_x,
+            test_y,
+            args.batch_size
+        )
+    )
+
+    print('\nValidation accuracy: {accuracy:0.3f}\n'.format(**eval_result))
+
+
 if __name__ == '__main__':
     tf.logging.set_verbosity(tf.logging.INFO)
     tf.app.run(main)
