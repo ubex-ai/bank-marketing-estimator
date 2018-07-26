@@ -45,6 +45,40 @@ def main(argv):
 
     print('\nValidation accuracy: {accuracy:0.3f}\n'.format(**eval_result))
 
+    # Try to predict results
+    expected = test_y
+    predictions = classifier.predict(
+        input_fn=lambda: bank_marketing_data.get_eval_input(
+            test_x,
+            labels=None,
+            batch_size=len(test_x)
+        )
+    )
+
+    template = ('Prediction is "{}" ({:.1f}%), expected "{}"')
+    totN, correctN, totY, correctY = 0, 0, 0, 0
+    for pred_dict, expec in zip(predictions, expected):
+        class_id = pred_dict['class_ids'][0]
+        probability = pred_dict['probabilities'][class_id]
+
+        if expec:
+            totY += 1
+            if class_id == expec:
+                correctY += 1
+            print(template.format(
+                bank_marketing_data.RESULTS[class_id],
+                100 * probability,
+                bank_marketing_data.RESULTS[expec]
+            ))
+        else:
+            totN += 1
+            if class_id == expec:
+                correctN += 1
+
+    print('\nNegative total {}, predicted {} ({:.1f}%); Positive total {}, predicted {} ({:.1f}%)'.format(
+        totN, correctN, correctN / totN * 100,
+        totY, correctY, correctY / totY * 100
+    ))
 
 if __name__ == '__main__':
     tf.logging.set_verbosity(tf.logging.INFO)
