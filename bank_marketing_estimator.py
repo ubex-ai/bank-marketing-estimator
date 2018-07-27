@@ -18,10 +18,11 @@ def main(argv):
     # Fetch the data
     (train_x, train_y), (test_x, test_y), feature_columns = bank_marketing_data.load_data()
 
-    # Build 2 hidden layer DNN with 60, 60 units respectively.
+    # Build 4 hidden layer DNN with 120, 720, 180, 60 units respectively.
     classifier = tf.estimator.DNNClassifier(
         feature_columns=feature_columns,
-        hidden_units=[60, 60]
+        hidden_units=[120, 720, 180, 60],
+        dropout=0.1
     )
 
     # Train the Model.
