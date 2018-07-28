@@ -1,0 +1,33 @@
+Deep Neural Network, 2 hidden layers [60, 60], batch 100, train steps 100:
+    Negative total 3668, predicted 3562 (97.1%); Positive total 451, predicted 123 (27.3%)
+
+Deep Neural Network, 3 hidden layers [60, 200, 60], batch 500, train steps 300:
+    Negative total 3668, predicted 3540 (96.5%); Positive total 451, predicted 171 (37.9%)
+
+Deep Neural Network, 3 hidden layers [100, 400, 50], batch 200, train steps 1000:
+    Negative total 3668, predicted 3498 (95.4%); Positive total 451, predicted 228 (50.6%)
+
+Deep Neural Network, 5 hidden layers [200, 400, 2000, 500, 100], batch 500, train steps 5000:
+    Negative total 3668, predicted 3452 (94.1%); Positive total 451, predicted 270 (59.9%) - looks over fitted for positive
+
+Deep Neural Network, 4 hidden layers [120, 480, 200, 60], dropout=0.1, batch 300, train steps 9000:
+    Negative total 3668, predicted 3513 (95.8%); Positive total 451, predicted 227 (50.3%)
+
+Deep Neural Network, 4 hidden layers [200, 100, 600, 100], batch 400, train steps 12000:
+    Negative total 3668, predicted 3568 (97.3%); Positive total 451, predicted 191 (42.4%)
+
+Deep Neural Network, 4 hidden layers [100, 600, 200, 100], dropout=0.2, batch 400, train steps 9000:
+    Negative total 3668, predicted 3555 (96.9%); Positive total 451, predicted 199 (44.1%)
+
+Deep Neural Network, 4 hidden layers [200, 800, 400, 100], dropout=0.1, batch 300, train steps 12000:
+    Negative total 3668, predicted 3632 (99.0%); Positive total 451, predicted 112 (24.8%)
+
+Deep Neural Network, 4 hidden layers [120, 800, 400, 100], dropout=0.15, batch 400, train steps 20000:
+    Negative total 3668, predicted 3598 (98.1%); Positive total 451, predicted 159 (35.3%)
+
+Deep Neural Network, 4 hidden layers [120, 480, 180, 100], dropout=0.1, batch 400, train steps 20000:
+    Negative total 3668, predicted 3542 (96.6%); Positive total 451, predicted 223 (49.4%)
+
+Deep Neural Network, 4 hidden layers [120, 720, 180, 60], dropout=0.1, batch 400, train steps 100000:
+    Negative total 3668, predicted 3542 (96.6%); Positive total 451, predicted 232 (51.4%)
+
