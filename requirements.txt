@@ -1,0 +1,6 @@
+#required
+#tensorflow
+tensorflow-gpu
+
+argparse
+pandas
